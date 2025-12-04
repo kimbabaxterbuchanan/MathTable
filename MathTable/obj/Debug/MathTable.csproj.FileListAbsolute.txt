@@ -1,0 +1,14 @@
+C:\Development\MathTable\MathTable\bin\Debug\MathTable.exe.config
+C:\Development\MathTable\MathTable\bin\Debug\MathTable.exe
+C:\Development\MathTable\MathTable\bin\Debug\MathTable.pdb
+C:\Development\MathTable\MathTable\obj\Debug\MathTable.csproj.AssemblyReference.cache
+C:\Development\MathTable\MathTable\obj\Debug\MathTable.Properties.Resources.resources
+C:\Development\MathTable\MathTable\obj\Debug\MathTable.csproj.GenerateResource.cache
+C:\Development\MathTable\MathTable\obj\Debug\MathTable.csproj.CoreCompileInputs.cache
+C:\Development\MathTable\MathTable\obj\Debug\MathTable.exe
+C:\Development\MathTable\MathTable\obj\Debug\MathTable.pdb
+C:\Development\MathTable\MathTable\obj\Debug\MathTable.exe.config
+C:\Development\MathTable\MathTable\obj\Debug\MathTable.FormMathAssistant.resources
+C:\Development\MathTable\MathTable\obj\Debug\MathTable.FormMultiplicationTable.resources
+C:\Development\MathTable\MathTable\obj\Debug\MathTable.FormShowMultiplicationWork.resources
+C:\Development\MathTable\MathTable\obj\Debug\MathTable.FormShowDivisionWork.resources
