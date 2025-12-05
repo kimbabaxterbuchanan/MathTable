@@ -112,6 +112,7 @@ namespace MathTable
 
             this.ClientSize = formSize;
             dgvMultiplicationTable.Size = cntrlSize;
+
             Application.DoEvents ();
         }
     }
