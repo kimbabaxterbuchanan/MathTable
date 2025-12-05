@@ -40,7 +40,6 @@ namespace MathTable
                 }
                 dgvMultiplicationTable.Rows[i].SetValues(row);
             }
-            
         }
 
         private void LoadHeaders()
@@ -58,10 +57,63 @@ namespace MathTable
             {
                 dgvMultiplicationTable.Rows.Add();
             }
-            dgvMultiplicationTable.Columns[5].HeaderText = colheader;
-            dgvMultiplicationTable.Rows[5].HeaderCell.Value = rowheader;
+            var columnHeaderLoc = multiplier.Length / 2 ;
+            var RowHeaderLoc = multiplicand.Length / 2;
+
+            dgvMultiplicationTable.Columns[columnHeaderLoc].HeaderText = colheader;
+            dgvMultiplicationTable.Rows[RowHeaderLoc].HeaderCell.Value = rowheader;
             dgvMultiplicationTable.RowHeadersWidth = rowheader.Length;
 
+        }
+
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+            var tableValues = Convert.ToInt32(txtBxTableValues.Text);
+            var tableColumnAndRows = multiplicand.Length;
+
+            var adjColumnAndRows = tableValues - tableColumnAndRows;
+
+            multiplicand = new int[tableValues];
+            multiplier = new int[tableValues];
+
+            for (int i = 0; i < tableValues; i++)
+            {
+                multiplicand[i] = i + 1;
+                multiplier[i] = i + 1;
+            }
+
+            dgvMultiplicationTable.Rows.Clear();
+            dgvMultiplicationTable.Columns.Clear();
+
+            loadMultiplicationTable();
+
+            var cntrlSize = dgvMultiplicationTable.Size;
+            var cntrlColumnWidth = dgvMultiplicationTable.Columns[0].Width;
+            var cntrlRowHeight = dgvMultiplicationTable.Rows [0].Height;
+
+            var formSize = this.ClientSize;
+
+            if (adjColumnAndRows > 0)
+            {
+                formSize.Width = formSize.Width + (cntrlColumnWidth * adjColumnAndRows);
+                formSize.Height = formSize.Height + (cntrlRowHeight * adjColumnAndRows);
+
+                cntrlSize.Width = cntrlSize.Width + (cntrlColumnWidth * adjColumnAndRows);
+                cntrlSize.Height = cntrlSize.Height + (cntrlRowHeight * adjColumnAndRows);
+            }
+            else if (adjColumnAndRows < 0)
+            {
+                formSize.Width = formSize.Width + (cntrlColumnWidth * adjColumnAndRows);
+                formSize.Height = formSize.Height + (cntrlRowHeight * adjColumnAndRows);
+
+                cntrlSize.Width = cntrlSize.Width + (cntrlColumnWidth * adjColumnAndRows);
+                cntrlSize.Height = cntrlSize.Height + (cntrlRowHeight * adjColumnAndRows);
+            }
+
+            this.ClientSize = formSize;
+            dgvMultiplicationTable.Size = cntrlSize;
+
+            Application.DoEvents ();
         }
     }
 }
