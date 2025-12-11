@@ -30,6 +30,9 @@
         {
             this.Math = new System.Windows.Forms.TabControl();
             this.tabMultiply = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblAddition = new System.Windows.Forms.Label();
+            this.btnShowMultiWork = new System.Windows.Forms.Button();
             this.rdBtnMultiplyFreeStyle = new System.Windows.Forms.RadioButton();
             this.pnlAnswer = new System.Windows.Forms.Panel();
             this.lblMultiplyAnswer = new System.Windows.Forms.Label();
@@ -51,6 +54,9 @@
             this.txtBxMultiplyMultiplier = new System.Windows.Forms.TextBox();
             this.txtBxMultiplyMultiplicand = new System.Windows.Forms.TextBox();
             this.tabDivide = new System.Windows.Forms.TabPage();
+            this.lblSubtract = new System.Windows.Forms.Label();
+            this.lblSubtraction = new System.Windows.Forms.Label();
+            this.btnShowDivWork = new System.Windows.Forms.Button();
             this.lblQuotient = new System.Windows.Forms.Label();
             this.lblRemainder = new System.Windows.Forms.Label();
             this.txtBxRemainder = new System.Windows.Forms.TextBox();
@@ -78,8 +84,6 @@
             this.txtBxDivisor = new System.Windows.Forms.TextBox();
             this.txtBxDividend = new System.Windows.Forms.TextBox();
             this.btnMultiplicationTable = new System.Windows.Forms.Button();
-            this.btnShowMultiWork = new System.Windows.Forms.Button();
-            this.btnShowDivWork = new System.Windows.Forms.Button();
             this.Math.SuspendLayout();
             this.tabMultiply.SuspendLayout();
             this.pnlAnswer.SuspendLayout();
@@ -101,6 +105,8 @@
             // 
             // tabMultiply
             // 
+            this.tabMultiply.Controls.Add(this.label4);
+            this.tabMultiply.Controls.Add(this.lblAddition);
             this.tabMultiply.Controls.Add(this.btnShowMultiWork);
             this.tabMultiply.Controls.Add(this.rdBtnMultiplyFreeStyle);
             this.tabMultiply.Controls.Add(this.pnlAnswer);
@@ -128,6 +134,35 @@
             this.tabMultiply.Text = "Multiply";
             this.tabMultiply.UseVisualStyleBackColor = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(640, 80);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(93, 24);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Addition:";
+            // 
+            // lblAddition
+            // 
+            this.lblAddition.AutoSize = true;
+            this.lblAddition.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddition.Location = new System.Drawing.Point(780, 80);
+            this.lblAddition.Name = "lblAddition";
+            this.lblAddition.Size = new System.Drawing.Size(0, 24);
+            this.lblAddition.TabIndex = 23;
+            // 
+            // btnShowMultiWork
+            // 
+            this.btnShowMultiWork.Location = new System.Drawing.Point(644, 28);
+            this.btnShowMultiWork.Name = "btnShowMultiWork";
+            this.btnShowMultiWork.Size = new System.Drawing.Size(129, 38);
+            this.btnShowMultiWork.TabIndex = 22;
+            this.btnShowMultiWork.Text = "Show Work";
+            this.btnShowMultiWork.UseVisualStyleBackColor = true;
+            this.btnShowMultiWork.Click += new System.EventHandler(this.btnShowMultiWork_Click);
+            // 
             // rdBtnMultiplyFreeStyle
             // 
             this.rdBtnMultiplyFreeStyle.AutoSize = true;
@@ -146,9 +181,9 @@
             this.pnlAnswer.Controls.Add(this.lblMultiplyAnswer);
             this.pnlAnswer.Controls.Add(this.txtBxMultiplyTestAnswer);
             this.pnlAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlAnswer.Location = new System.Drawing.Point(479, 210);
+            this.pnlAnswer.Location = new System.Drawing.Point(190, 266);
             this.pnlAnswer.Name = "pnlAnswer";
-            this.pnlAnswer.Size = new System.Drawing.Size(439, 46);
+            this.pnlAnswer.Size = new System.Drawing.Size(285, 46);
             this.pnlAnswer.TabIndex = 20;
             this.pnlAnswer.Visible = false;
             this.pnlAnswer.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
@@ -166,7 +201,7 @@
             // 
             this.txtBxMultiplyTestAnswer.Location = new System.Drawing.Point(165, 9);
             this.txtBxMultiplyTestAnswer.Name = "txtBxMultiplyTestAnswer";
-            this.txtBxMultiplyTestAnswer.Size = new System.Drawing.Size(260, 29);
+            this.txtBxMultiplyTestAnswer.Size = new System.Drawing.Size(100, 29);
             this.txtBxMultiplyTestAnswer.TabIndex = 16;
             this.txtBxMultiplyTestAnswer.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtBxMultiplyTestAnswer.TextChanged += new System.EventHandler(this.txtBxTestAnswer_TextChanged);
@@ -175,7 +210,7 @@
             // 
             this.chkBxMultiplyShow.AutoSize = true;
             this.chkBxMultiplyShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkBxMultiplyShow.Location = new System.Drawing.Point(316, 215);
+            this.chkBxMultiplyShow.Location = new System.Drawing.Point(27, 271);
             this.chkBxMultiplyShow.Name = "chkBxMultiplyShow";
             this.chkBxMultiplyShow.Size = new System.Drawing.Size(157, 28);
             this.chkBxMultiplyShow.TabIndex = 19;
@@ -209,7 +244,7 @@
             this.txtBxMultiplyCorrect.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBxMultiplyCorrect.Location = new System.Drawing.Point(150, 402);
             this.txtBxMultiplyCorrect.Name = "txtBxMultiplyCorrect";
-            this.txtBxMultiplyCorrect.Size = new System.Drawing.Size(635, 29);
+            this.txtBxMultiplyCorrect.Size = new System.Drawing.Size(425, 29);
             this.txtBxMultiplyCorrect.TabIndex = 14;
             // 
             // lblMultiplyCorrect
@@ -346,6 +381,8 @@
             // 
             // tabDivide
             // 
+            this.tabDivide.Controls.Add(this.lblSubtract);
+            this.tabDivide.Controls.Add(this.lblSubtraction);
             this.tabDivide.Controls.Add(this.btnShowDivWork);
             this.tabDivide.Controls.Add(this.lblQuotient);
             this.tabDivide.Controls.Add(this.lblRemainder);
@@ -376,11 +413,40 @@
             this.tabDivide.Text = "Divide";
             this.tabDivide.UseVisualStyleBackColor = true;
             // 
+            // lblSubtract
+            // 
+            this.lblSubtract.AutoSize = true;
+            this.lblSubtract.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubtract.Location = new System.Drawing.Point(743, 76);
+            this.lblSubtract.Name = "lblSubtract";
+            this.lblSubtract.Size = new System.Drawing.Size(0, 24);
+            this.lblSubtract.TabIndex = 48;
+            // 
+            // lblSubtraction
+            // 
+            this.lblSubtraction.AutoSize = true;
+            this.lblSubtraction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubtraction.Location = new System.Drawing.Point(622, 75);
+            this.lblSubtraction.Name = "lblSubtraction";
+            this.lblSubtraction.Size = new System.Drawing.Size(115, 24);
+            this.lblSubtraction.TabIndex = 47;
+            this.lblSubtraction.Text = "Subtraction";
+            // 
+            // btnShowDivWork
+            // 
+            this.btnShowDivWork.Location = new System.Drawing.Point(647, 29);
+            this.btnShowDivWork.Name = "btnShowDivWork";
+            this.btnShowDivWork.Size = new System.Drawing.Size(129, 38);
+            this.btnShowDivWork.TabIndex = 46;
+            this.btnShowDivWork.Text = "Show Work";
+            this.btnShowDivWork.UseVisualStyleBackColor = true;
+            this.btnShowDivWork.Click += new System.EventHandler(this.btnShowDivWork_Click);
+            // 
             // lblQuotient
             // 
             this.lblQuotient.AutoSize = true;
             this.lblQuotient.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuotient.Location = new System.Drawing.Point(201, 155);
+            this.lblQuotient.Location = new System.Drawing.Point(177, 75);
             this.lblQuotient.Name = "lblQuotient";
             this.lblQuotient.Size = new System.Drawing.Size(85, 24);
             this.lblQuotient.TabIndex = 44;
@@ -390,7 +456,7 @@
             // 
             this.lblRemainder.AutoSize = true;
             this.lblRemainder.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRemainder.Location = new System.Drawing.Point(377, 155);
+            this.lblRemainder.Location = new System.Drawing.Point(286, 75);
             this.lblRemainder.Name = "lblRemainder";
             this.lblRemainder.Size = new System.Drawing.Size(105, 24);
             this.lblRemainder.TabIndex = 45;
@@ -399,9 +465,9 @@
             // txtBxRemainder
             // 
             this.txtBxRemainder.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBxRemainder.Location = new System.Drawing.Point(352, 182);
+            this.txtBxRemainder.Location = new System.Drawing.Point(277, 102);
             this.txtBxRemainder.Name = "txtBxRemainder";
-            this.txtBxRemainder.Size = new System.Drawing.Size(130, 29);
+            this.txtBxRemainder.Size = new System.Drawing.Size(114, 29);
             this.txtBxRemainder.TabIndex = 40;
             this.txtBxRemainder.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtBxRemainder.TextChanged += new System.EventHandler(this.txtBxRemainder_TextChanged);
@@ -410,9 +476,9 @@
             // txtBxQuotient
             // 
             this.txtBxQuotient.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBxQuotient.Location = new System.Drawing.Point(164, 182);
+            this.txtBxQuotient.Location = new System.Drawing.Point(175, 102);
             this.txtBxQuotient.Name = "txtBxQuotient";
-            this.txtBxQuotient.Size = new System.Drawing.Size(154, 29);
+            this.txtBxQuotient.Size = new System.Drawing.Size(96, 29);
             this.txtBxQuotient.TabIndex = 25;
             this.txtBxQuotient.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtBxQuotient.Leave += new System.EventHandler(this.txtBxQuotient_Leave);
@@ -421,18 +487,18 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(141, 199);
+            this.label2.Location = new System.Drawing.Point(152, 119);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(340, 24);
+            this.label2.Size = new System.Drawing.Size(241, 24);
             this.label2.TabIndex = 43;
-            this.label2.Text = "______________________________";
+            this.label2.Text = "_____________________";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(125, 218);
+            this.label1.Location = new System.Drawing.Point(136, 138);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(22, 24);
             this.label1.TabIndex = 42;
@@ -459,17 +525,17 @@
             this.pnlDivideShow.Controls.Add(this.lblDivideQuotient);
             this.pnlDivideShow.Controls.Add(this.lblDivideRemainder);
             this.pnlDivideShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlDivideShow.Location = new System.Drawing.Point(500, 125);
+            this.pnlDivideShow.Location = new System.Drawing.Point(431, 109);
             this.pnlDivideShow.Name = "pnlDivideShow";
-            this.pnlDivideShow.Size = new System.Drawing.Size(413, 94);
+            this.pnlDivideShow.Size = new System.Drawing.Size(269, 94);
             this.pnlDivideShow.TabIndex = 38;
             this.pnlDivideShow.Visible = false;
             // 
             // txtBxRemainderAnswer
             // 
-            this.txtBxRemainderAnswer.Location = new System.Drawing.Point(246, 56);
+            this.txtBxRemainderAnswer.Location = new System.Drawing.Point(141, 56);
             this.txtBxRemainderAnswer.Name = "txtBxRemainderAnswer";
-            this.txtBxRemainderAnswer.Size = new System.Drawing.Size(151, 29);
+            this.txtBxRemainderAnswer.Size = new System.Drawing.Size(110, 29);
             this.txtBxRemainderAnswer.TabIndex = 19;
             this.txtBxRemainderAnswer.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -486,14 +552,15 @@
             // 
             this.txtBxQuotientAnswer.Location = new System.Drawing.Point(16, 57);
             this.txtBxQuotientAnswer.Name = "txtBxQuotientAnswer";
-            this.txtBxQuotientAnswer.Size = new System.Drawing.Size(186, 29);
+            this.txtBxQuotientAnswer.Size = new System.Drawing.Size(106, 29);
             this.txtBxQuotientAnswer.TabIndex = 16;
             this.txtBxQuotientAnswer.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtBxQuotientAnswer.TextChanged += new System.EventHandler(this.txtBxQuotientAnswer_TextChanged);
             // 
             // lblDivideQuotient
             // 
             this.lblDivideQuotient.AutoSize = true;
-            this.lblDivideQuotient.Location = new System.Drawing.Point(81, 32);
+            this.lblDivideQuotient.Location = new System.Drawing.Point(28, 29);
             this.lblDivideQuotient.Name = "lblDivideQuotient";
             this.lblDivideQuotient.Size = new System.Drawing.Size(85, 24);
             this.lblDivideQuotient.TabIndex = 28;
@@ -502,7 +569,7 @@
             // lblDivideRemainder
             // 
             this.lblDivideRemainder.AutoSize = true;
-            this.lblDivideRemainder.Location = new System.Drawing.Point(268, 29);
+            this.lblDivideRemainder.Location = new System.Drawing.Point(137, 29);
             this.lblDivideRemainder.Name = "lblDivideRemainder";
             this.lblDivideRemainder.Size = new System.Drawing.Size(105, 24);
             this.lblDivideRemainder.TabIndex = 41;
@@ -512,7 +579,7 @@
             // 
             this.chkBxDivideShow.AutoSize = true;
             this.chkBxDivideShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkBxDivideShow.Location = new System.Drawing.Point(500, 91);
+            this.chkBxDivideShow.Location = new System.Drawing.Point(431, 75);
             this.chkBxDivideShow.Name = "chkBxDivideShow";
             this.chkBxDivideShow.Size = new System.Drawing.Size(157, 28);
             this.chkBxDivideShow.TabIndex = 37;
@@ -602,7 +669,7 @@
             // 
             this.lblDivideDivisor.AutoSize = true;
             this.lblDivideDivisor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDivideDivisor.Location = new System.Drawing.Point(48, 255);
+            this.lblDivideDivisor.Location = new System.Drawing.Point(59, 175);
             this.lblDivideDivisor.Name = "lblDivideDivisor";
             this.lblDivideDivisor.Size = new System.Drawing.Size(71, 24);
             this.lblDivideDivisor.TabIndex = 27;
@@ -612,7 +679,7 @@
             // 
             this.lblDivideDividend.AutoSize = true;
             this.lblDivideDividend.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDivideDividend.Location = new System.Drawing.Point(201, 258);
+            this.lblDivideDividend.Location = new System.Drawing.Point(212, 178);
             this.lblDivideDividend.Name = "lblDivideDividend";
             this.lblDivideDividend.Size = new System.Drawing.Size(90, 24);
             this.lblDivideDividend.TabIndex = 26;
@@ -622,7 +689,7 @@
             // 
             this.lblDivideSign.AutoSize = true;
             this.lblDivideSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDivideSign.Location = new System.Drawing.Point(125, 231);
+            this.lblDivideSign.Location = new System.Drawing.Point(136, 151);
             this.lblDivideSign.Name = "lblDivideSign";
             this.lblDivideSign.Size = new System.Drawing.Size(16, 24);
             this.lblDivideSign.TabIndex = 24;
@@ -631,7 +698,7 @@
             // txtBxDivisor
             // 
             this.txtBxDivisor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBxDivisor.Location = new System.Drawing.Point(19, 223);
+            this.txtBxDivisor.Location = new System.Drawing.Point(30, 143);
             this.txtBxDivisor.Name = "txtBxDivisor";
             this.txtBxDivisor.Size = new System.Drawing.Size(100, 29);
             this.txtBxDivisor.TabIndex = 23;
@@ -642,9 +709,9 @@
             // txtBxDividend
             // 
             this.txtBxDividend.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBxDividend.Location = new System.Drawing.Point(164, 226);
+            this.txtBxDividend.Location = new System.Drawing.Point(175, 146);
             this.txtBxDividend.Name = "txtBxDividend";
-            this.txtBxDividend.Size = new System.Drawing.Size(313, 29);
+            this.txtBxDividend.Size = new System.Drawing.Size(216, 29);
             this.txtBxDividend.TabIndex = 22;
             this.txtBxDividend.Text = "1";
             this.txtBxDividend.Leave += new System.EventHandler(this.txtBxDividend_Leave);
@@ -659,26 +726,6 @@
             this.btnMultiplicationTable.Text = "Show Multiplication Table";
             this.btnMultiplicationTable.UseVisualStyleBackColor = true;
             this.btnMultiplicationTable.Click += new System.EventHandler(this.btnMultiplicationTable_Click);
-            // 
-            // btnShowMultiWork
-            // 
-            this.btnShowMultiWork.Location = new System.Drawing.Point(644, 28);
-            this.btnShowMultiWork.Name = "btnShowMultiWork";
-            this.btnShowMultiWork.Size = new System.Drawing.Size(129, 38);
-            this.btnShowMultiWork.TabIndex = 22;
-            this.btnShowMultiWork.Text = "Show Work";
-            this.btnShowMultiWork.UseVisualStyleBackColor = true;
-            this.btnShowMultiWork.Click += new System.EventHandler(this.btnShowMultiWork_Click);
-            // 
-            // btnShowDivWork
-            // 
-            this.btnShowDivWork.Location = new System.Drawing.Point(647, 29);
-            this.btnShowDivWork.Name = "btnShowDivWork";
-            this.btnShowDivWork.Size = new System.Drawing.Size(129, 38);
-            this.btnShowDivWork.TabIndex = 46;
-            this.btnShowDivWork.Text = "Show Work";
-            this.btnShowDivWork.UseVisualStyleBackColor = true;
-            this.btnShowDivWork.Click += new System.EventHandler(this.btnShowDivWork_Click);
             // 
             // FormMathAssistant
             // 
@@ -756,6 +803,10 @@
         private System.Windows.Forms.Button btnMultiplicationTable;
         private System.Windows.Forms.Button btnShowMultiWork;
         private System.Windows.Forms.Button btnShowDivWork;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblAddition;
+        private System.Windows.Forms.Label lblSubtract;
+        private System.Windows.Forms.Label lblSubtraction;
     }
 }
 

@@ -123,6 +123,7 @@ namespace MathTable
                 txtBxMultiplyProduct.Enabled = true;
                 txtBxMultiplyMultiplicand.Enabled = false;
                 txtBxMultiplyMultiplier.Enabled = false;
+                showAddition(multiplicantResults, multiplierResults);
             }
         }
 
@@ -144,7 +145,7 @@ namespace MathTable
                 txtBxMultiplyProduct.Enabled = false;
                 txtBxMultiplyMultiplicand.Enabled = true;
                 txtBxMultiplyMultiplier.Enabled = false;
-
+                showAddition(multiplicantResults, multiplierResults);
             }
         }
 
@@ -166,7 +167,7 @@ namespace MathTable
                 txtBxMultiplyProduct.Enabled = false;
                 txtBxMultiplyMultiplicand.Enabled = false;
                 txtBxMultiplyMultiplier.Enabled = true;
-
+                showAddition(multiplicantResults, multiplierResults);
             }
         }
 
@@ -265,6 +266,7 @@ namespace MathTable
             txtBxRemainderAnswer.Text = string.Empty;  
             txtBxDivideCorrect .Text = string.Empty;
             btnDivideNext.Enabled = false;
+            lblAddition.Text = string.Empty;
         }
 
         private void txtBxTestAnswer_TextChanged(object sender, EventArgs e)
@@ -280,6 +282,22 @@ namespace MathTable
         private void chkBxShow_CheckedChanged(object sender, EventArgs e)
         {
             pnlAnswer.Visible = chkBxMultiplyShow.Checked;
+        }
+
+        private void showAddition(int multiplicand, int multiplier)
+        {
+            int product = 0;
+            string plusSign = "   ";
+            lblAddition.Text = string.Empty;
+            for (int i = 0; i < multiplier; i++)
+            {
+                lblAddition.Text += plusSign + multiplicand.ToString() + Environment.NewLine;
+                product += multiplicand;
+                lblAddition.Refresh();
+                plusSign = "+ ";
+            }
+            lblAddition.Text += "--------------" + Environment.NewLine;
+            lblAddition.Text += " " + product.ToString();
         }
 
         private void rdBtnFreeStyle_CheckedChanged(object sender, EventArgs e)
@@ -321,6 +339,7 @@ namespace MathTable
                 txtBxRemainder.Enabled = true;
                 txtBxDividend.Enabled = false;
                 txtBxDivisor.Enabled = false;
+                showSubtraction(dividendResults, divisorResults, quotientResults);
             }
         }
 
@@ -347,6 +366,7 @@ namespace MathTable
                 txtBxRemainder.Enabled = false;
                 txtBxDividend.Enabled = true;
                 txtBxDivisor.Enabled = false;
+                showSubtraction(dividendResults, divisorResults, quotientResults);
             }
         }
 
@@ -373,6 +393,7 @@ namespace MathTable
                 txtBxRemainder.Enabled = false;
                 txtBxDividend.Enabled = false;
                 txtBxDivisor.Enabled = true;
+                showSubtraction(dividendResults, divisorResults, quotientResults);
             }
         }
 
@@ -455,12 +476,33 @@ namespace MathTable
                     setRandomValues(sender, e);
                 }
             }
-            btnMultiplyNext.Enabled = false;
+            btnDivideNext.Enabled = false;
         }
+
+
 
         private void chkBxDivideShow_CheckedChanged(object sender, EventArgs e)
         {
             pnlDivideShow.Visible = chkBxDivideShow.Checked;
+         }
+
+        private void showSubtraction(int dividend, int divisor, int quotientResults)
+        {
+            string minusSign = "   ";
+            lblSubtract.Text = string.Empty;
+            int quotient = 0;
+            int remainder = 0;
+
+            for (int i = 0; i < quotientResults; i++)
+            {
+                lblSubtract.Text += minusSign + divisor.ToString() + Environment.NewLine;
+                lblSubtract.Refresh();
+                quotient = quotient + divisor;
+                minusSign = "+ ";
+            }
+            remainder = dividend - quotient;
+            lblSubtract.Text += "--------------" + Environment.NewLine;
+            lblSubtract.Text += "   " + quotientResults.ToString() + " needing " + remainder.ToString();
         }
 
         private void txtBxDivisor_Leave(object sender, EventArgs e)
@@ -568,6 +610,11 @@ namespace MathTable
         {
             FormShowDivisionWork formShowDivisionWork = new FormShowDivisionWork();
             formShowDivisionWork.ShowDialog();
+        }
+
+        private void txtBxQuotientAnswer_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
