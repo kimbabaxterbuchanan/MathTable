@@ -50,7 +50,6 @@
             this.lblMultiplyMultiplier = new System.Windows.Forms.Label();
             this.lblMultiplyMultiplicant = new System.Windows.Forms.Label();
             this.txtBxMultiplyProduct = new System.Windows.Forms.TextBox();
-            this.lblMultiplySign = new System.Windows.Forms.Label();
             this.txtBxMultiplyMultiplier = new System.Windows.Forms.TextBox();
             this.txtBxMultiplyMultiplicand = new System.Windows.Forms.TextBox();
             this.tabDivide = new System.Windows.Forms.TabPage();
@@ -125,12 +124,11 @@
             this.tabMultiply.Controls.Add(this.lblMultiplyMultiplier);
             this.tabMultiply.Controls.Add(this.lblMultiplyMultiplicant);
             this.tabMultiply.Controls.Add(this.txtBxMultiplyProduct);
-            this.tabMultiply.Controls.Add(this.lblMultiplySign);
             this.tabMultiply.Controls.Add(this.txtBxMultiplyMultiplier);
             this.tabMultiply.Controls.Add(this.txtBxMultiplyMultiplicand);
             this.tabMultiply.Location = new System.Drawing.Point(4, 33);
             this.tabMultiply.Name = "tabMultiply";
-            this.tabMultiply.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabMultiply.Padding = new System.Windows.Forms.Padding(3);
             this.tabMultiply.Size = new System.Drawing.Size(929, 472);
             this.tabMultiply.TabIndex = 0;
             this.tabMultiply.Text = "Multiply";
@@ -350,16 +348,6 @@
             this.txtBxMultiplyProduct.TextChanged += new System.EventHandler(this.txtBxProduct_TextChanged);
             this.txtBxMultiplyProduct.Leave += new System.EventHandler(this.txtBxProduct_Leave);
             // 
-            // lblMultiplySign
-            // 
-            this.lblMultiplySign.AutoSize = true;
-            this.lblMultiplySign.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMultiplySign.Location = new System.Drawing.Point(799, 390);
-            this.lblMultiplySign.Name = "lblMultiplySign";
-            this.lblMultiplySign.Size = new System.Drawing.Size(25, 24);
-            this.lblMultiplySign.TabIndex = 3;
-            this.lblMultiplySign.Text = "X";
-            // 
             // txtBxMultiplyMultiplier
             // 
             this.txtBxMultiplyMultiplier.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold);
@@ -410,7 +398,7 @@
             this.tabDivide.Controls.Add(this.txtBxDividend);
             this.tabDivide.Location = new System.Drawing.Point(4, 33);
             this.tabDivide.Name = "tabDivide";
-            this.tabDivide.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabDivide.Padding = new System.Windows.Forms.Padding(3);
             this.tabDivide.Size = new System.Drawing.Size(929, 472);
             this.tabDivide.TabIndex = 1;
             this.tabDivide.Text = "Divide";
@@ -764,6 +752,7 @@
             this.cmbBxTable.Name = "cmbBxTable";
             this.cmbBxTable.Size = new System.Drawing.Size(121, 30);
             this.cmbBxTable.TabIndex = 27;
+            this.cmbBxTable.SelectedIndexChanged += new System.EventHandler(this.cmbBxTable_SelectedIndexChanged);
             // 
             // FormMathAssistant
             // 
@@ -799,7 +788,6 @@
         private System.Windows.Forms.Label lblMultiplyMultiplier;
         private System.Windows.Forms.Label lblMultiplyMultiplicant;
         private System.Windows.Forms.TextBox txtBxMultiplyProduct;
-        private System.Windows.Forms.Label lblMultiplySign;
         private System.Windows.Forms.TextBox txtBxMultiplyMultiplier;
         private System.Windows.Forms.TextBox txtBxMultiplyMultiplicand;
         private System.Windows.Forms.Button btnMultiplyEquals;

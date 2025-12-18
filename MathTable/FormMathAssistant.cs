@@ -111,7 +111,7 @@ namespace MathTable
             if (rdBtnMultiplyMultiply.Checked)
             {
                 bCorrectAnswer = false;
-                NextMultipleProblem(0);
+                NextMultipleProblem();
 
                 txtBxMultiplyMultiplicand.Text = multiplicandResults.ToString();
                 txtBxMultiplyMultiplier.Text = multiplierResults.ToString();
@@ -130,7 +130,7 @@ namespace MathTable
             if (rdBtnMultiplyMultiplicand.Checked)
             {
                 bCorrectAnswer = false;
-                NextMultipleProblem(1);
+                NextMultipleProblem();
 
                 txtBxMultiplyMultiplicand.Text = string.Empty;
                 txtBxMultiplyMultiplier.Text = multiplierResults.ToString();
@@ -150,7 +150,7 @@ namespace MathTable
             if (rdBtnMultiplyMultiplier.Checked)
             {
                 bCorrectAnswer = false;
-                NextMultipleProblem(2);
+                NextMultipleProblem();
 
                 txtBxMultiplyMultiplicand.Text = multiplicandResults.ToString();
                 txtBxMultiplyMultiplier.Text = string.Empty;
@@ -243,7 +243,7 @@ namespace MathTable
             btnMultiplyNext.Enabled = false;
         }
 
-        private void NextMultipleProblem(int multiplicationComponent)
+        private void NextMultipleProblem()
         {
             var tableToUse = cmbBxTable.SelectedIndex;
 
@@ -253,19 +253,7 @@ namespace MathTable
 
             if (tableToUse > 0)
             {
-                switch (multiplicationComponent)
-                {
-                    case 0:
-                        multiplierResults = tableToUse;
-                        break;
-                    case 1:
-                        multiplierResults = tableToUse;
-                        break;
-                    case 2:
-                        multiplicandResults = tableToUse;
-                        multiplierResults = random.Next(1, 12);
-                        break;
-                }
+                multiplierResults = tableToUse;
             }
             productResults = multiplicandResults * multiplierResults;
         }
@@ -683,6 +671,14 @@ namespace MathTable
         private void txtBxQuotientAnswer_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cmbBxTable_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbBxTable.SelectedIndex > 0)
+            {
+                setRandomValues(sender, e);
+            }
         }
     }
 }
