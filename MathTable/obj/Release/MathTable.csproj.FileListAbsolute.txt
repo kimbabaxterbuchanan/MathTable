@@ -15,7 +15,6 @@ C:\GitHub\MathTable\MathTable\bin\Release\MathTable.exe.config
 C:\GitHub\MathTable\MathTable\bin\Release\MathTable.exe
 C:\GitHub\MathTable\MathTable\bin\Release\MathTable.pdb
 C:\GitHub\MathTable\MathTable\obj\Release\MathTable.csproj.AssemblyReference.cache
-C:\GitHub\MathTable\MathTable\obj\Release\MathTable.exe.config
 C:\GitHub\MathTable\MathTable\obj\Release\MathTable.FormMathAssistant.resources
 C:\GitHub\MathTable\MathTable\obj\Release\MathTable.FormMultiplicationTable.resources
 C:\GitHub\MathTable\MathTable\obj\Release\MathTable.FormShowDivisionWork.resources

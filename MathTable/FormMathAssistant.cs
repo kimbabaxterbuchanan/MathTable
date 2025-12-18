@@ -16,7 +16,7 @@ namespace MathTable
     public partial class FormMathAssistant : Form
     {
         Random random;
-        int multiplicantResults = 0;
+        int multiplicandResults = 0;
         int multiplierResults = 0;
         int productResults = 0;
         bool bCorrectAnswer = false;
@@ -34,10 +34,10 @@ namespace MathTable
             object sender = new object();
             EventArgs e = new EventArgs();
             setRandomValues(sender, e);
-            txtBxMultiplyMultiplicand.Text = multiplicantResults.ToString();
+            txtBxMultiplyMultiplicand.Text = multiplicandResults.ToString();
             txtBxMultiplyMultiplier.Text = multiplierResults.ToString();
             txtBxMultiplyProduct.Text = string.Empty;
-            productResults = multiplicantResults * multiplierResults;
+            productResults = multiplicandResults * multiplierResults;
             txtBxMultiplyTestAnswer.Text = productResults.ToString();
             txtBxMultiplyTestAnswer.Enabled = false;
             bCorrectAnswer = false;
@@ -52,14 +52,14 @@ namespace MathTable
 
         private void btnEquals_Click(object sender, EventArgs e)
         {
-            var multiplicantAnswer = Convert.ToInt32(string.IsNullOrEmpty(txtBxMultiplyMultiplicand.Text) ? "0" : txtBxMultiplyMultiplicand.Text);
+            var multiplicandAnswer = Convert.ToInt32(string.IsNullOrEmpty(txtBxMultiplyMultiplicand.Text) ? "0" : txtBxMultiplyMultiplicand.Text);
             var multiplierAnswer = Convert.ToInt32(string.IsNullOrEmpty(txtBxMultiplyMultiplier.Text) ? "0" : txtBxMultiplyMultiplier.Text);
             int product = Convert.ToInt32(string.IsNullOrEmpty(txtBxMultiplyProduct.Text) ? "0" : txtBxMultiplyProduct.Text);
             txtBxMultiplyTestAnswer.Text = productResults.ToString();
 
             if (!rdBtnMultiplyMultiply.Checked && ! freestyle)
             {
-                product = multiplicantAnswer * multiplierAnswer;
+                product = multiplicandAnswer * multiplierAnswer;
             }
 
             if (product == productResults)
@@ -111,19 +111,17 @@ namespace MathTable
             if (rdBtnMultiplyMultiply.Checked)
             {
                 bCorrectAnswer = false;
-                random = new Random();
-                multiplicantResults = random.Next(1, 12);
-                multiplierResults = random.Next(1, 12);
-                txtBxMultiplyMultiplicand.Text = multiplicantResults.ToString();
+                NextMultipleProblem(0);
+
+                txtBxMultiplyMultiplicand.Text = multiplicandResults.ToString();
                 txtBxMultiplyMultiplier.Text = multiplierResults.ToString();
-                productResults = multiplicantResults * multiplierResults;
                 txtBxMultiplyProduct.Text = string.Empty;
                 txtBxMultiplyTestAnswer.Text = productResults.ToString();
                 lblMultiplyAnswer.Text = "Correct Answer";
                 txtBxMultiplyProduct.Enabled = true;
                 txtBxMultiplyMultiplicand.Enabled = false;
                 txtBxMultiplyMultiplier.Enabled = false;
-                showAddition(multiplicantResults, multiplierResults);
+                showAddition(multiplicandResults, multiplierResults);
             }
         }
 
@@ -132,20 +130,18 @@ namespace MathTable
             if (rdBtnMultiplyMultiplicand.Checked)
             {
                 bCorrectAnswer = false;
-                random = new Random();
-                multiplicantResults = random.Next(1, 12);
-                multiplierResults = random.Next(1, 12);
+                NextMultipleProblem(1);
 
                 txtBxMultiplyMultiplicand.Text = string.Empty;
                 txtBxMultiplyMultiplier.Text = multiplierResults.ToString();
-                productResults = multiplicantResults * multiplierResults;
+
                 txtBxMultiplyProduct.Text = productResults.ToString();
-                txtBxMultiplyTestAnswer.Text = multiplicantResults.ToString();
+                txtBxMultiplyTestAnswer.Text = multiplicandResults.ToString();
  //               lblMultiplyAnswer.Text = "Your Answer";
                 txtBxMultiplyProduct.Enabled = false;
                 txtBxMultiplyMultiplicand.Enabled = true;
                 txtBxMultiplyMultiplier.Enabled = false;
-                showAddition(multiplicantResults, multiplierResults);
+                showAddition(multiplicandResults, multiplierResults);
             }
         }
 
@@ -154,34 +150,32 @@ namespace MathTable
             if (rdBtnMultiplyMultiplier.Checked)
             {
                 bCorrectAnswer = false;
-                random = new Random();
-                multiplicantResults = random.Next(1, 12);
-                multiplierResults = random.Next(1, 12);
+                NextMultipleProblem(2);
 
-                txtBxMultiplyMultiplicand.Text = multiplicantResults.ToString();
+                txtBxMultiplyMultiplicand.Text = multiplicandResults.ToString();
                 txtBxMultiplyMultiplier.Text = string.Empty;
-                productResults = multiplicantResults * multiplierResults;
+
                 txtBxMultiplyTestAnswer.Text = multiplierResults.ToString();
                 txtBxMultiplyProduct.Text = productResults.ToString();
 //                lblMultiplyAnswer.Text = "Your Answer";
                 txtBxMultiplyProduct.Enabled = false;
                 txtBxMultiplyMultiplicand.Enabled = false;
                 txtBxMultiplyMultiplier.Enabled = true;
-                showAddition(multiplicantResults, multiplierResults);
+                showAddition(multiplicandResults, multiplierResults);
             }
         }
 
         private void txtBxMultiplicand_Leave(object sender, EventArgs e)
         {
             getFreeStyle();
-            productResults = multiplicantResults * multiplierResults;
+            productResults = multiplicandResults * multiplierResults;
             txtBxMultiplyTestAnswer.Text = productResults.ToString();
         }
 
         private void txtBxMultiplier_Leave(object sender, EventArgs e)
         {
             getFreeStyle();
-            productResults = multiplicantResults * multiplierResults;
+            productResults = multiplicandResults * multiplierResults;
             txtBxMultiplyTestAnswer.Text = productResults.ToString();
         }
 
@@ -249,6 +243,33 @@ namespace MathTable
             btnMultiplyNext.Enabled = false;
         }
 
+        private void NextMultipleProblem(int multiplicationComponent)
+        {
+            var tableToUse = cmbBxTable.SelectedIndex;
+
+            random = new Random();
+            multiplicandResults = random.Next(1, 12);
+            multiplierResults = random.Next(1, 12);
+
+            if (tableToUse > 0)
+            {
+                switch (multiplicationComponent)
+                {
+                    case 0:
+                        multiplierResults = tableToUse;
+                        break;
+                    case 1:
+                        multiplierResults = tableToUse;
+                        break;
+                    case 2:
+                        multiplicandResults = tableToUse;
+                        multiplierResults = random.Next(1, 12);
+                        break;
+                }
+            }
+            productResults = multiplicandResults * multiplierResults;
+        }
+
         private void clearTextBoxes()
         {
             txtBxMultiplyTestAnswer.Text = string.Empty;
@@ -287,17 +308,42 @@ namespace MathTable
         private void showAddition(int multiplicand, int multiplier)
         {
             int product = 0;
-            string plusSign = "   ";
+            string plusSign = " ";
+            if (multiplicandResults < 100)
+            {
+                plusSign += " ";
+            }
+            if (multiplicandResults < 10)
+            {
+                plusSign += " ";
+            }
             lblAddition.Text = string.Empty;
             for (int i = 0; i < multiplier; i++)
             {
-                lblAddition.Text += plusSign + multiplicand.ToString() + Environment.NewLine;
+                lblAddition.Text += plusSign + multiplicandResults.ToString() + Environment.NewLine;
                 product += multiplicand;
                 lblAddition.Refresh();
-                plusSign = "+ ";
+                plusSign = "+";
+                if (multiplicandResults < 100)
+                {
+                    plusSign = " +";
+                }
+                if (multiplicandResults < 10)
+                {
+                    plusSign = "  +";
+                }
             }
             lblAddition.Text += "--------------" + Environment.NewLine;
-            lblAddition.Text += " " + product.ToString();
+            plusSign = "   ";
+            if (product > 9)
+            {
+                plusSign = "  ";
+            }
+            if (product > 99)
+            {
+                plusSign = " ";
+            }
+            lblAddition.Text += plusSign + product.ToString();
         }
 
         private void rdBtnFreeStyle_CheckedChanged(object sender, EventArgs e)
@@ -322,13 +368,12 @@ namespace MathTable
             if (rdBtnDivide.Checked)
             {
                 bCorrectAnswer = false;
-                random = new Random();
-                divisorResults = random.Next(1, 12);
-                dividendResults = random.Next(1, 12)+divisorResults;
+
+                NextDivideProblem();
+
                 txtBxDivisor.Text = divisorResults.ToString();
                 txtBxDividend.Text = dividendResults.ToString();
-                quotientResults = dividendResults / divisorResults;
-                remainderResults = Convert.ToInt32(dividendResults - Convert.ToDecimal((divisorResults * quotientResults)));
+
                 txtBxQuotient.Text = string.Empty;
                 txtBxQuotientAnswer.Text = quotientResults.ToString();
                 txtBxRemainder.Text = string.Empty;
@@ -348,13 +393,10 @@ namespace MathTable
             if (rdBtnDividend.Checked)
             {
                 bCorrectAnswer = false;
-                random = new Random();
-                divisorResults = random.Next(1, 12);
-                dividendResults = random.Next(1, 12) + divisorResults;
+                NextDivideProblem();
+
                 txtBxDivisor.Text = divisorResults.ToString();
                 txtBxDividend.Text = string.Empty;
-                quotientResults = dividendResults / divisorResults;
-                remainderResults = Convert.ToInt32(dividendResults - Convert.ToDecimal((divisorResults * quotientResults)));
 
                 txtBxQuotient.Text = quotientResults.ToString();
                 txtBxQuotientAnswer.Text = dividendResults.ToString();
@@ -375,13 +417,11 @@ namespace MathTable
             if (rdBtnDivisor.Checked)
             {
                 bCorrectAnswer = false;
-                random = new Random();
-                divisorResults = random.Next(1, 12);
-                dividendResults = random.Next(1, 12) + divisorResults;
+
+                NextDivideProblem();
+                
                 txtBxDivisor.Text = string.Empty;
                 txtBxDividend.Text = dividendResults.ToString();
-                quotientResults = dividendResults / divisorResults;
-                remainderResults = Convert.ToInt32(dividendResults - Convert.ToDecimal((divisorResults * quotientResults)));
 
                 txtBxQuotient.Text = quotientResults.ToString();
                 txtBxQuotientAnswer.Text = divisorResults.ToString();
@@ -479,7 +519,25 @@ namespace MathTable
             btnDivideNext.Enabled = false;
         }
 
+        private void NextDivideProblem()
+        {
+            var tableToUse = cmbBxTable.SelectedIndex;
 
+            random = new Random();
+            divisorResults = random.Next(1, 12);
+            dividendResults = random.Next(1, 12);
+            var randomMultiplier = random.Next(1, 12);
+
+            if (tableToUse > 0)
+            {
+                divisorResults = tableToUse;
+            }
+
+            dividendResults = dividendResults + (divisorResults * randomMultiplier);
+            quotientResults = dividendResults / divisorResults;
+            remainderResults = Convert.ToInt32(dividendResults - Convert.ToDecimal((divisorResults * quotientResults)));
+
+        }
 
         private void chkBxDivideShow_CheckedChanged(object sender, EventArgs e)
         {
@@ -488,17 +546,27 @@ namespace MathTable
 
         private void showSubtraction(int dividend, int divisor, int quotientResults)
         {
-            string minusSign = "   ";
+            string minusSign = " ";
+            if (dividendResults < 10)
+            {
+                minusSign = "  ";
+            }
             lblSubtract.Text = string.Empty;
             int quotient = 0;
             int remainder = 0;
+            lblSubtract.Text += minusSign + dividendResults + Environment.NewLine;
+            
+            minusSign = "-";
+            if (divisor < 10)
+            {
+                minusSign = " -";
+            }
 
             for (int i = 0; i < quotientResults; i++)
             {
                 lblSubtract.Text += minusSign + divisor.ToString() + Environment.NewLine;
                 lblSubtract.Refresh();
                 quotient = quotient + divisor;
-                minusSign = "+ ";
             }
             remainder = dividend - quotient;
             lblSubtract.Text += "--------------" + Environment.NewLine;
@@ -530,10 +598,10 @@ namespace MathTable
         {
             if (freestyle)
             {
-                var multiplicantResult = valuecheck(1);
-                if (multiplicantResult > -1)
+                var multiplicandResult = valuecheck(1);
+                if (multiplicandResult > -1)
                 {
-                    multiplicantResults = multiplicantResult;
+                    multiplicandResults = multiplicandResult;
                 }
                 var multiplierResult = valuecheck(2);
                 if (multiplierResult > -1)
